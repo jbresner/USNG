@@ -1,4 +1,8 @@
 // app.js
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('get-location').addEventListener('click', getLocation);
+});
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -15,18 +19,19 @@ function showPosition(position) {
 }
 
 function showError(error) {
+  const output = document.getElementById("output");
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      document.getElementById("output").innerHTML = "User denied the request for Geolocation.";
+      output.innerHTML = "User denied the request for Geolocation.";
       break;
     case error.POSITION_UNAVAILABLE:
-      document.getElementById("output").innerHTML = "Location information is unavailable.";
+      output.innerHTML = "Location information is unavailable.";
       break;
     case error.TIMEOUT:
-      document.getElementById("output").innerHTML = "The request to get user location timed out.";
+      output.innerHTML = "The request to get user location timed out.";
       break;
     case error.UNKNOWN_ERROR:
-      document.getElementById("output").innerHTML = "An unknown error occurred.";
+      output.innerHTML = "An unknown error occurred.";
       break;
   }
 }
