@@ -5,9 +5,9 @@ var accuracyCircle = null;
 function initMap(lat, lng) {
   if (map) return;
   map = L.map('map', { zoomControl: true, attributionControl: true }).setView([lat, lng], 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 19
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://stadiamaps.com/">Stadia Maps</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 20
   }).addTo(map);
 }
 
@@ -50,7 +50,7 @@ function setStatus(msg, type) {
 }
 
 function latLngToUSNG(lat, lng, precision) {
-  precision = precision || 4;
+  precision = precision || 5;
   const NORTHING_OFFSET = 10000000;
   const k0 = 0.9996, a = 6378137, ecc = 0.081819191;
   const ecc2 = ecc*ecc, ecc4 = ecc2*ecc2, ecc6 = ecc4*ecc2;
@@ -116,7 +116,7 @@ function getLocation() {
       const lat = pos.coords.latitude;
       const lng = pos.coords.longitude;
       const acc = pos.coords.accuracy;
-      const result = latLngToUSNG(lat, lng, 4);
+      const result = latLngToUSNG(lat, lng, 5);
       document.getElementById('usng-out').textContent = result.usng;
       document.getElementById('lat-out').textContent = lat.toFixed(6) + '°';
       document.getElementById('lng-out').textContent = lng.toFixed(6) + '°';
