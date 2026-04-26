@@ -5,9 +5,9 @@ var accuracyCircle = null;
 function initMap(lat, lng) {
   if (map) return;
   map = L.map('map', { zoomControl: true, attributionControl: true }).setView([lat, lng], 15);
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://stadiamaps.com/">Stadia Maps</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 20
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19
   }).addTo(map);
 }
 
