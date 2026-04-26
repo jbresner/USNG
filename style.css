@@ -103,6 +103,19 @@ body {
 .dot.ok  { background: #639922; }
 .dot.err { background: #E24B4A; }
 
+.map-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  height: 200px;
+  background: #f5f4f0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
 .refresh-btn {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;

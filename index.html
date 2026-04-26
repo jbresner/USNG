@@ -11,6 +11,7 @@
   <title>USNG Locator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -25,9 +26,13 @@
       <div class="sub-box"><div class="label">Grid zone</div><div class="sub-val" id="gzd-out">—</div></div>
       <div class="sub-box"><div class="label">Accuracy</div><div class="sub-val" id="acc-out">—</div></div>
     </div>
+    <div class="map-wrap">
+      <div id="map"></div>
+    </div>
     <button class="refresh-btn" onclick="getLocation()">Refresh location</button>
     <div class="hint" id="hint-text"></div>
   </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

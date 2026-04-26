@@ -1,3 +1,48 @@
+var map = null;
+var marker = null;
+var accuracyCircle = null;
+
+function initMap(lat, lng) {
+  if (map) return;
+  map = L.map('map', { zoomControl: true, attributionControl: true }).setView([lat, lng], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19
+  }).addTo(map);
+}
+
+function updateMap(lat, lng, acc) {
+  if (!map) {
+    initMap(lat, lng);
+  } else {
+    map.setView([lat, lng], 15);
+  }
+
+  if (marker) {
+    marker.setLatLng([lat, lng]);
+  } else {
+    marker = L.circleMarker([lat, lng], {
+      radius: 8,
+      fillColor: '#1a1a1a',
+      color: '#fff',
+      weight: 2,
+      fillOpacity: 1
+    }).addTo(map);
+  }
+
+  if (accuracyCircle) {
+    accuracyCircle.setLatLng([lat, lng]).setRadius(acc);
+  } else {
+    accuracyCircle = L.circle([lat, lng], {
+      radius: acc,
+      color: '#1a1a1a',
+      fillColor: '#1a1a1a',
+      fillOpacity: 0.08,
+      weight: 1
+    }).addTo(map);
+  }
+}
+
 function setStatus(msg, type) {
   const dot = document.getElementById('dot');
   dot.className = 'dot' + (type === 'ok' ? ' ok' : type === 'err' ? ' err' : '');
@@ -5,7 +50,7 @@ function setStatus(msg, type) {
 }
 
 function latLngToUSNG(lat, lng, precision) {
-  precision = precision || 5;
+  precision = precision || 4;
   const NORTHING_OFFSET = 10000000;
   const k0 = 0.9996, a = 6378137, ecc = 0.081819191;
   const ecc2 = ecc*ecc, ecc4 = ecc2*ecc2, ecc6 = ecc4*ecc2;
@@ -51,9 +96,8 @@ function latLngToUSNG(lat, lng, precision) {
   const colLetter = colSets[(zone - 1) % 3][colIdx - 1];
   const rowLetter = rowSets[(zone - 1) % 2][rowIdx % 20];
 
-  const p = precision;
-  const eStr = String(easting % 100000).padStart(5,'0').slice(0, p);
-  const nStr = String(northing % 100000).padStart(5,'0').slice(0, p);
+  const eStr = String(easting % 100000).padStart(5,'0').slice(0, precision);
+  const nStr = String(northing % 100000).padStart(5,'0').slice(0, precision);
   const gzd = String(zone).padStart(2,'0') + latBand;
   return { usng: gzd + ' ' + colLetter + rowLetter + ' ' + eStr + ' ' + nStr, gzd };
 }
@@ -72,13 +116,14 @@ function getLocation() {
       const lat = pos.coords.latitude;
       const lng = pos.coords.longitude;
       const acc = pos.coords.accuracy;
-      const result = latLngToUSNG(lat, lng, 5);
+      const result = latLngToUSNG(lat, lng, 4);
       document.getElementById('usng-out').textContent = result.usng;
       document.getElementById('lat-out').textContent = lat.toFixed(6) + '°';
       document.getElementById('lng-out').textContent = lng.toFixed(6) + '°';
       document.getElementById('gzd-out').textContent = result.gzd;
       document.getElementById('acc-out').textContent = '±' + Math.round(acc) + ' m';
       setStatus('Location updated', 'ok');
+      updateMap(lat, lng, acc);
     },
     function(err) {
       const msgs = {
