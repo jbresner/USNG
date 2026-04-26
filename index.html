@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="USNG" />
+  <meta name="theme-color" content="#f5f4f0" />
+  <title>USNG Locator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="page-title">Your USNG location</div>
+    <div class="status"><span class="dot" id="dot"></span><span id="status-text">Requesting location…</span></div>
+    <div class="label">USNG coordinate</div>
+    <div class="coord-box" id="usng-out">—</div>
+    <div class="sub-grid">
+      <div class="sub-box"><div class="label">Latitude</div><div class="sub-val" id="lat-out">—</div></div>
+      <div class="sub-box"><div class="label">Longitude</div><div class="sub-val" id="lng-out">—</div></div>
+      <div class="sub-box"><div class="label">Grid zone</div><div class="sub-val" id="gzd-out">—</div></div>
+      <div class="sub-box"><div class="label">Accuracy</div><div class="sub-val" id="acc-out">—</div></div>
+    </div>
+    <button class="refresh-btn" onclick="getLocation()">Refresh location</button>
+    <div class="hint" id="hint-text"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

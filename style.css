@@ -1,0 +1,130 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f5f4f0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: max(env(safe-area-inset-top), 1.5rem);
+  padding-bottom: max(env(safe-area-inset-bottom), 1.5rem);
+  padding-left: max(env(safe-area-inset-left), 1rem);
+  padding-right: max(env(safe-area-inset-right), 1rem);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+}
+
+.page-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 6px;
+}
+
+.coord-box {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(18px, 5.5vw, 24px);
+  font-weight: 700;
+  color: #1a1a1a;
+  background: #f5f4f0;
+  border-radius: 12px;
+  padding: 1.2rem 1.25rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.04em;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  word-break: break-all;
+  user-select: all;
+  -webkit-user-select: all;
+}
+
+.sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+
+.sub-box {
+  background: #f5f4f0;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+
+.sub-val {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(12px, 3.5vw, 14px);
+  color: #1a1a1a;
+  margin-top: 4px;
+}
+
+.status {
+  font-size: 13px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+  min-height: 22px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #BA7517;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+
+.dot.ok  { background: #639922; }
+.dot.err { background: #E24B4A; }
+
+.refresh-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.refresh-btn:active { opacity: 0.7; }
+
+.hint {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+  text-align: center;
+}
