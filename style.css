@@ -61,6 +61,18 @@ body {
   -webkit-user-select: all;
 }
 
+.usng-link {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #999;
+  text-decoration: none;
+  margin-top: -0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.usng-link:hover { color: #555; }
+
 .sub-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -140,5 +152,13 @@ body {
   margin-top: 0.75rem;
   line-height: 1.6;
   text-align: center;
+}
+
+.version {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #ccc;
+  text-align: right;
+  margin-top: 1.25rem;
 }
 

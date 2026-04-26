@@ -20,6 +20,7 @@
     <div class="status"><span class="dot" id="dot"></span><span id="status-text">Requesting location…</span></div>
     <div class="label">USNG coordinate</div>
     <div class="coord-box" id="usng-out">—</div>
+    <a class="usng-link" href="https://www.fgdc.gov/usng/how-to-read-usng" target="_blank" rel="noopener">What is USNG?</a>
     <div class="sub-grid">
       <div class="sub-box"><div class="label">Latitude</div><div class="sub-val" id="lat-out">—</div></div>
       <div class="sub-box"><div class="label">Longitude</div><div class="sub-val" id="lng-out">—</div></div>
@@ -31,6 +32,7 @@
     </div>
     <button class="refresh-btn" onclick="getLocation()">Refresh location</button>
     <div class="hint" id="hint-text"></div>
+    <div class="version">v0.5</div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
